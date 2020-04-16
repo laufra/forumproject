@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="www.thymeleaf.org">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+    <title>Threads</title>
+    <link rel="stylesheet" type="text/css" href="homeStyle.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <header>
+      <a href="#" th:href="@{/}" class="logo">Sheridan -- Stutalk</a>
+      <div class="mTog"></div>
+      <nav>
+        <ul>
+            <li><a th:href="@{/}" class="current">Home</a></li>
+            <li><a th:href="@{/tracking}">Friends</a></li>
+            <li><a th:href="@{/account}">Account</a></li>
+        </ul>
+      </nav>
+      <div class="cf"></div>
+    </header>
+    <script>
+      //When mTog (Menu Toggle) is clicked
+      //append the letter a to the end of
+      //the class. This changes the text
+      //of the menu toggle object and
+      //sets the display type of nav to none.
+      $(document).ready(function(){
+        $('.mTog').click(function(){
+          $('.mTog').toggleClass('a')
+          $('nav').toggleClass('a')
+        })
+      })
+    </script>
+    <div class="mainContent">
+      <ul>
+      	<li th:each="thread : ${threads}">
+        	<div class="thread">
+          		<a href="#" th:href="@{/thread(id=${thread.getThreadId()})}">[[${thread.getName()}]]</a>
+          		Replies: [[${thread.getNumOfPosts()}]]
+          		Author: [[${thread.getAuthor()}]]
+        	</div>
+      	</li>
+      </ul>
+    </div>
+  </body>
+</html>

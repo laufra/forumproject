@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap');
+body
+{
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto Slab', serif;
+  background-color: #eeeeee;
+}
+
+header
+{
+    position: relative;
+    max-width: 100%;
+    background: #00adb5;
+    box-sizing: border-box;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    padding: 10px;
+}
+.logo
+{
+    font-size: 34px;
+    line-height: 63px;
+    padding: 0 20px;
+    color: #eeeeee;
+    height: 63px;
+    font-weight: 730;
+    text-decoration: none;
+    text-align: center;
+    box-sizing: border-box;
+    float: left;
+}
+
+nav
+{
+  float: right;
+}
+
+nav ul
+{
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav ul li
+{
+  list-style: none;
+}
+
+nav ul li a
+{
+  display: block;
+  margin: 10px 0;
+  text-decoration: none;
+  padding: 10px 20px;
+  color: #fff;
+}
+
+nav ul li a.current,
+nav ul li a:hover
+{
+  background: #eeeeee;
+  color: #00adb5;
+  transition: 0.5;
+}
+
+.cf
+{
+  clear: both;
+}
+@media(max-width: 1200px)
+{
+  .mainContent
+  {
+    margin: 20px;
+  }
+}
+
+@media(max-width: 550px)
+{
+  .mTog
+  {
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+    background: #00adb5;
+    color: #eeeeee;
+    float: right;
+    cursor: pointer;
+    text-align: center;
+    font-size: 30px;
+  }
+
+  .mTog:before
+  {
+    content: '\f0c9';
+    font-family: fontAwesome;
+    line-height: 40px;
+  }
+
+  .mTog.a:before
+  {
+    content: '\f00d';
+  }
+
+  nav
+  {
+    display: none;
+  }
+
+  nav.a
+  {
+    display: block;
+    width: 100%;
+  }
+
+  nav.a ul
+  {
+    display: block;
+  }
+}
+
+.mainContent ul li
+{
+  list-style: none;
+}
+
+.register
+{
+  background-color: #00adb5;
+  margin: auto;
+  font-size: 30px;
+  width: 30%;
+  margin-top: 10%;
+  padding: 2%;
+
+}
+
+.f
+{
+  text-align: left;
+  display: inline-flex;
+  width: 100%;
+  margin: auto auto auto auto;
+  margin-bottom: 5%;
+  margin-top: 5%;
+}
+.register p
+{
+    margin-left: 2%;
+    width: 20%;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: right;
+    margin-right: 2%;
+    color: #eeeeee;
+}
+
+.field
+{
+  width: 60%;
+  height: 40%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.login
+{
+    margin-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #00adb5;
+    color: #eeeeee;
+    font-size: 15px;
+    display: inline-block;
+}

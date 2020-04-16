@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap');
+body
+{
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto Slab', serif;
+  background-color: #eeeeee;
+}
+
+header
+{
+    position: relative;
+    max-width: 100%;
+    background: #00adb5;
+    box-sizing: border-box;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    padding: 10px;
+    margin-bottom: 5%;
+}
+.logo
+{
+    font-size: 34px;
+    line-height: 63px;
+    padding: 0 20px;
+    color: #eeeeee;
+    height: 63px;
+    font-weight: 730;
+    text-decoration: none;
+    text-align: center;
+    box-sizing: border-box;
+    float: left;
+}
+
+nav
+{
+  float: right;
+}
+
+nav ul
+{
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav ul li
+{
+  list-style: none;
+}
+
+nav ul li a
+{
+  display: block;
+  margin: 10px 0;
+  text-decoration: none;
+  padding: 10px 20px;
+  color: #fff;
+}
+
+nav ul li a.current,
+nav ul li a:hover
+{
+  background: #eeeeee;
+  color: #00adb5;
+  transition: 0.5;
+}
+
+.cf
+{
+  clear: both;
+}
+
+@media(max-width: 1200px)
+{
+  .mainContent
+  {
+    margin: 20px;
+  }
+}
+
+@media(max-width: 550px)
+{
+  .mTog
+  {
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+    background: #00adb5;
+    color: #eeeeee;
+    float: right;
+    cursor: pointer;
+    text-align: center;
+    font-size: 30px;
+  }
+
+  .mTog:before
+  {
+    content: '\f0c9';
+    font-family: fontAwesome;
+    line-height: 40px;
+  }
+
+  .mTog.a:before
+  {
+    content: '\f00d';
+  }
+
+  nav
+  {
+    display: none;
+  }
+
+  nav.a
+  {
+    display: block;
+    width: 100%;
+  }
+
+  nav.a ul
+  {
+    display: block;
+  }
+
+  .mainContent ul li
+  {
+    list-style: none;
+  }
+}
+
+.thread
+{
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  min-width: 60%;
+  width: auto;
+  max-width: 80%;
+  background: #00adb5;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  padding: 3px;
+  margin: auto auto;
+  margin-bottom: 2%;
+}
+
+.thread p
+{
+  text-align: right;
+  margin: auto auto;
+}
+
+.thread a
+{
+  text-align: left;
+  margin: auto auto;
+  text-decoration: none;
+  background-color: #eeeeee;
+  color: #00adb5;
+  padding-right: 4px;
+  padding-left: 4px;
+  margin-bottom: 5%;
+  margin-top: 5%;
+}
+
+.newThread
+{
+  text-align: center;
+  text-decoration: none;
+  background-color: #eeeeee;
+  color: #00adb5;
+  padding-right: 4px;
+  padding-left: 4px;
+  margin-bottom: 5%;
+  margin-top: 9%;
+  margin-left: 12%;
+}
+
+
+.mainContent ul li
+{
+  list-style: none;
+}
+
+.thread a:hover
+{
+  background: #248ea9;
+  color: #eeeeee;
+  transition: 0.5;
+}

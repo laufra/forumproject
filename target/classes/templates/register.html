@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="www.thymeleaf.org">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+    <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="register.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <header>
+      <a href="#" th:href="@{/}" class="logo">Sheridan -- Stutalk</a>
+      <div class="mTog"></div>
+      <nav>
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/tracking}">Friends</a></li>
+            <li><a th:href="@{/account}" class="current">Account</a></li>
+        </ul>
+      </nav>
+      <div class="cf"></div>
+    </header>
+    <script>
+      //When mTog (Menu Toggle) is clicked
+      //append the letter a to the end of
+      //the class. This changes the text
+      //of the menu toggle object and
+      //sets the display type of nav to none.
+      $(document).ready(function(){
+        $('.mTog').click(function(){
+          $('.mTog').toggleClass('a')
+          $('nav').toggleClass('a')
+        })
+      })
+    </script>
+    <div class="mainContent">
+      <form th:action="@{/register}" method="post" class="register">
+        <div class="f">
+          <p>Username:</p> <input class="field" type="text" name="username" autofocus/><br>
+        </div>
+
+        <div class="f">
+        <p>Password:</p> <input class="field" type="password" name="password"/><br>
+        </div>
+
+        <div class="f">
+        <p>Email:</p> <input class="field" type="email" name="email"/><br>
+        </div>
+
+        <div class="f">
+          <input type="submit" value="Register">
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

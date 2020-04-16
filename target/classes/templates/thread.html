@@ -1,0 +1,278 @@
+	<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+    <title>Thread</title>
+    <link rel="stylesheet" type="text/css" href="thread.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+  	<style>
+  	@import url('https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap');
+body
+{
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto Slab', serif;
+  background-color: #eeeeee;
+}
+
+header
+{
+    position: relative;
+    max-width: 100%;
+    background: #00adb5;
+    box-sizing: border-box;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    padding: 10px;
+}
+.logo
+{
+    font-size: 34px;
+    line-height: 63px;
+    padding: 0 20px;
+    color: #eeeeee;
+    height: 63px;
+    font-weight: 730;
+    text-decoration: none;
+    text-align: center;
+    box-sizing: border-box;
+    float: left;
+}
+
+nav
+{
+  float: right;
+}
+
+nav ul
+{
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav ul li
+{
+  list-style: none;
+}
+
+nav ul li a
+{
+  display: block;
+  margin: 10px 0;
+  text-decoration: none;
+  padding: 10px 20px;
+  color: #fff;
+}
+
+nav ul li a.current,
+nav ul li a:hover
+{
+  background: #eeeeee;
+  color: #00adb5;
+  transition: 0.5;
+}
+
+.cf
+{
+  clear: both;
+}
+@media(max-width: 1200px)
+{
+  .mainContent
+  {
+    margin: 20px;
+  }
+}
+
+@media(max-width: 550px)
+{
+  .mTog
+  {
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+    background: #00adb5;
+    color: #eeeeee;
+    float: right;
+    cursor: pointer;
+    text-align: center;
+    font-size: 30px;
+  }
+
+  .mTog:before
+  {
+    content: '\f0c9';
+    font-family: fontAwesome;
+    line-height: 40px;
+  }
+
+  .mTog.a:before
+  {
+    content: '\f00d';
+  }
+
+  nav
+  {
+    display: none;
+  }
+
+  nav.a
+  {
+    display: block;
+    width: 100%;
+  }
+
+  nav.a ul
+  {
+    display: block;
+  }
+}
+
+.mainContent ul li
+{
+  list-style: none;
+}
+
+.post
+{
+    display: grid;
+    grid-template-columns: 300px 500px;
+    grid-template-rows: auto auto;
+    background-color: #00adb5;
+    margin-top: 1%;
+    margin-left: 5%;
+    margin-right: 5%;
+    border-bottom-left-radius: 5%;
+ 	border-top-right-radius: 5%;
+  	box-shadow: 5px 5px 12px;
+  	margin-bottom: 5%;
+}
+.user
+{
+  grid-area: 1 / 1 / span 1 / span 1;
+  text-align: center;
+  margin-bottom: 20%;
+  margin-top: 20%;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #eeeeee;
+  padding: 4%;
+  border-top-right-radius: 10%;
+  box-shadow: 5px -5px 8px #007065;
+  width: 70%;
+}
+
+.profilePic
+{
+  max-width: 150px;
+}
+.postContent
+{
+  grid-area: 1 / 2 / span 3 / span 3;
+  text-align: left;
+  margin-top: 2.4%;
+  margin-bottom: 2%;
+  background-color: #eeeeee;
+  padding: 4%;
+  margin-right: 4%;
+  box-shadow: 5px -5px 8px #007065;
+}
+
+.threadName
+{
+  margin-left: 5%;
+}
+
+.newPost
+{
+  color: #00adb5;
+  padding: 0.4%;
+  text-decoration: none;
+  margin-left: 0.4%;
+}
+
+.delThread
+{
+  color: red;
+  padding: 0.4%;
+  text-decoration: none;
+  margin-left: 5%;
+}
+
+.delPost
+{
+  color: red;
+  text-decoration: none;
+}
+.postImage
+{
+  max-width: 100%;
+}
+  	</style>
+  </head>
+  <body>
+    <header>
+      <a href="#" th:href="@{/}" class="logo">Sheridan -- Stutalk</a>
+      <div class="mTog"></div>
+      <nav>
+        <ul>
+            <li><a th:href="@{/}" class="current">Home</a></li>
+            <li><a th:href="@{/tracking}">Friends</a></li>
+            <li><a th:href="@{/account}">Account</a></li>
+        </ul>
+      </nav>
+      <div class="cf"></div>
+    </header>
+    <script>
+      //When mTog (Menu Toggle) is clicked
+      //appends the letter a to the end of
+      //the class. This changes the text
+      //of the menu toggle object and
+      //sets the display type of nav to none.
+      $(document).ready(function(){
+        $('.mTog').click(function(){
+          $('.mTog').toggleClass('a')
+          $('nav').toggleClass('a')
+        })
+      })
+    </script>
+    <div class="mainContent">
+      <h3 class="threadName">[[${thread.getName()}]]<a th:href="@{/reply(threadId=${thread.getThreadId()})}" class="newPost">+ Reply</a></h3><br><br>
+      
+      <div th:if="${mainRole == 'ADMIN'}">
+            <a class="delThread" th:href="@{/deleteThread(id=${thread.getThreadId()})}">Delete Thread</a>
+      </div>
+      <div class="post" th:each="p : ${posts}">
+        <div class="user">
+          <div th:if="${p.isPicture()}">
+          	<img class="profilePic" th:src="${p.getProfilePicture()}"><br>
+          </div>
+          <div th:unless="${p.isPicture()}">
+          	<img class="profilePic" src="https://t3.ftcdn.net/jpg/00/64/67/80/240_F_64678017_zUpiZFjj04cnLri7oADnyMH0XBYyQghG.jpg"><br>
+          </div>
+          <a class="username" th:href="@{/profile(id=${p.getUser_id()})}">[[${p.getUsername()}]]</a>
+          <p>Number of posts: [[${p.getNumOfPosts()}]]</p>
+          <p>Date Posted: <br>[[${p.getPost_time()}]]</p>
+          <div th:if="${mainRole == 'ADMIN'}">
+            <a class="delPost" th:href="@{/deletePost(id=${p.getPost_id()})}">Delete Post</a>
+          </div>
+          <div th:if="${mainRole == 'MODERATOR'}">
+            <a class="delPost" th:href="@{/deletePost(id=${p.getPost_id()})}">Delete Post</a>
+          </div>
+        </div>
+        <div class="postContent">
+        	[[${p.getPost_text()}]]<br><br>
+        	<div th:if="${p.isPhoto()}">
+        		<img class="postImage" th:src="${p.getPostPhoto()}"/>
+        	</div>
+        	<div style="position: relative;">
+        		<hr style="position: relative; bottom: 12;'">
+        		[[${p.getSignature()}]]
+        	</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

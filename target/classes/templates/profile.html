@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="www.thymeleaf.org">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+    <title>Profile</title>
+    <link rel="stylesheet" type="text/css" href="profile.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+  <style>
+  @import url('https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap');
+body
+{
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto Slab', serif;
+  background-color: #eeeeee;
+}
+
+header
+{
+    position: relative;
+    max-width: 100%;
+    background: #00adb5;
+    box-sizing: border-box;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    padding: 10px;
+}
+.logo
+{
+    font-size: 34px;
+    line-height: 63px;
+    padding: 0 20px;
+    color: #eeeeee;
+    height: 63px;
+    font-weight: 730;
+    text-decoration: none;
+    text-align: center;
+    box-sizing: border-box;
+    float: left;
+}
+
+nav
+{
+  float: right;
+}
+
+nav ul
+{
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav ul li
+{
+  list-style: none;
+}
+
+nav ul li a
+{
+  display: block;
+  margin: 10px 0;
+  text-decoration: none;
+  padding: 10px 20px;
+  color: #fff;
+}
+
+nav ul li a.current,
+nav ul li a:hover
+{
+  background: #eeeeee;
+  color: #00adb5;
+  transition: 0.5;
+}
+
+.cf
+{
+  clear: both;
+}
+@media(max-width: 1200px)
+{
+  .mainContent
+  {
+    margin: 20px;
+  }
+}
+
+@media(max-width: 550px)
+{
+  .mTog
+  {
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+    background: #00adb5;
+    color: #eeeeee;
+    float: right;
+    cursor: pointer;
+    text-align: center;
+    font-size: 30px;
+  }
+
+  .mTog:before
+  {
+    content: '\f0c9';
+    font-family: fontAwesome;
+    line-height: 40px;
+  }
+
+  .mTog.a:before
+  {
+    content: '\f00d';
+  }
+
+  nav
+  {
+    display: none;
+  }
+
+  nav.a
+  {
+    display: block;
+    width: 100%;
+  }
+
+  nav.a ul
+  {
+    display: block;
+  }
+}
+
+.mainContent ul li
+{
+  list-style: none;
+}
+
+
+.container
+{
+  display: grid;
+  grid-template-columns: 200px 400px;
+  grid-template-rows: auto;
+  grid-gap: 10px;
+  background-color: #00adb5;
+  margin: auto auto;
+  width: auto;
+  max-width: 30%;
+  min-width: 20%;
+}
+
+.userPicture
+{
+  grid-area: 1 / 1 ;
+}
+
+.userInfo
+{
+  grid-area: 1 / 2;
+}
+
+.bio
+{
+  grid-area: 2 / 1 / span 1 / span 2;
+  padding: 5%;
+  background-color: #eeeeee;
+  box-shadow: 5px 5px 12px;
+  margin-right: 8%;
+  margin-left: 2%;
+}
+
+.rewards
+{
+  grid-area: 3 / 1 / span 1 / span 2;
+  padding: 5%;
+  background-color: #eeeeee;
+  box-shadow: 5px 5px 12px;
+  margin-right: 8%;
+  margin-left: 2%;
+  margin-bottom: 4%;
+}
+
+.profilePic
+{
+  width: 200px;
+}
+
+input[type=submit] 
+{
+    padding:5px 15px;
+    background: #eeeeee;
+    color: #00adb5;
+    margin: auto;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    width: 30%;
+    height: 45;
+    font-size: 24;
+    margin-top: 1%;
+}
+
+.delUser
+{
+	color: red;
+	text-decoration: none;
+	text-align: center;
+	margin: auto auto;
+}
+
+.reward
+{
+	text-align: center;
+}
+  </style>
+  </head>
+  <body>
+    <header>
+      <a th:href="@{/}" class="logo">Sheridan -- Stutalk</a>
+      <div class="mTog"></div>
+      <nav>
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/tracking}">Friends</a></li>
+            <li><a th:href="@{/account}" class="current">Account</a></li>
+        </ul>
+      </nav>
+      <div class="cf"></div>
+    </header>
+    <script>
+      //When mTog (Menu Toggle) is clicked
+      //append the letter a to the end of
+      //the class. This changes the text
+      //of the menu toggle object and
+      //sets the display type of nav to none.
+      $(document).ready(function(){
+        $('.mTog').click(function(){
+          $('.mTog').toggleClass('a')
+          $('nav').toggleClass('a')
+        })
+      })
+    </script>
+    <div class="mainContent">
+    	<div id ="rewardTracker">	
+    	</div>
+    	<a th:if="${mainRole == 'ADMIN'}" class="delUser" href="#" th:href="@{/disableUser(uid=${user.getUid()})}">Disable User</a>
+        <a th:if="${mainRole == 'MODERATOR'}" class="delUser" href="#" th:href="@{/disableUser(uid=${user.getUid()})}">Disable User</a>
+        <form th:if="${mainRole == 'ADMIN'}" th:action="@{/promote}" method="get">
+    			<input hidden="true" type="text" name="id" th:value="${user.getUid()}">
+    			<input type="submit" value="Promote User">
+    	</form>
+		<div th:if="${user.getPrivacy() == 'public'}">
+			<div class="container">
+			<div class="userPicture">
+    			<div th:if="${user.isHasProfilePicture()}">
+        	  		<img class="profilePic" th:src="${user.getProfilePicture()}"><br>
+       	 		</div>
+       	 		<div th:unless="${user.isHasProfilePicture()}">
+       	 			<img class="profilePic" src="https://t3.ftcdn.net/jpg/00/64/67/80/240_F_64678017_zUpiZFjj04cnLri7oADnyMH0XBYyQghG.jpg"><br>
+    			</div>
+    		</div>
+    		<div class="userInfo">
+				Username: [[${user.username}]]<br>
+    			Email: [[${user.email}]]<br>
+    			Number of Posts: [[${user.numOfPosts}]]<br>
+    			Signature: [[${user.signature}]]<br>
+    			<form th:action="@{/follow}" method="get">
+    				<input hidden="true" type="text" name="username" th:value="${user.getUsername()}">
+    				<input type="submit" value="Follow">
+    			</form>
+            
+          </div>
+            
+    		</div>
+    		<div class="rewards">
+    			Rewards<br>
+    			<table>
+    				<tr>
+    					<th>Reward Name</th>
+    					<th>Description</th>
+    				</tr>
+    				<tr th:each="reward : ${rewards}">
+    					<td th:text="${reward.getReward_name()}">
+    					<td th:text="${reward.getReward_description()}">
+    				</tr>
+    			</table>
+    		</div>
+    		<div class="bio">
+    			Bio: <br>
+    			[[${user.bio}]]
+    		</div>
+    		</div>
+    	</div>
+    	<div th:if="${user.getPrivacy() == 'private'}">
+			<p>This account is private.</p>
+    	</div>
+    	<div th:if="${user.getPrivacy() == 'followers'}">
+    		<div th:unless="${isFollower}">
+    			<p>You must be a follower to view this page!</p>
+    			<a th:href="@{/follow(username=${user.getUsername()})}">Follow [[${user.getUsername()}]]</a>
+    		</div>
+    		
+
+    		<div th:if="${isFollower}">
+				<div class="container">
+				<div class="userPicture">
+    			<div th:if="${user.isHasProfilePicture()}">
+        	  		<img class="profilePic" th:src="${user.getProfilePicture()}"><br>
+       	 		</div>
+       	 		<div th:unless="${user.isHasProfilePicture()}">
+       	 			<img class="profilePic" src="https://t3.ftcdn.net/jpg/00/64/67/80/240_F_64678017_zUpiZFjj04cnLri7oADnyMH0XBYyQghG.jpg"><br>
+    			</div>
+				</div>
+				    			
+    		<div class="userInfo">
+				Username: [[${user.username}]]<br>
+    			Email: [[${user.email}]]<br>
+    			Number of Posts: [[${user.numOfPosts}]]<br>
+    			Signature: [[${user.signature}]]<br>
+    			<form th:unless="${isFollower}" th:action="@{/follow}" method="get">
+    				<input hidden="true" type="text" name="username" th:value="${user.getUsername()}">
+    				<input type="submit" value="Follow">
+    			</form>
+    		</div>
+    		<div class="rewards">
+    			Rewards<br>
+    			<table class="reward">
+    				<tr>
+    					<th>Reward Name</th>
+    					<th>Description</th>
+    				</tr>
+    				<tr th:each="reward : ${rewards}">
+    					<td th:text="${reward.getReward_name()}">
+    					<td th:text="${reward.getReward_description()}">
+    				</tr>
+    			</table>
+    		</div>
+    		<div class="bio">
+    			Bio:
+    			[[${user.bio}]]
+    		</div>
+    		
+    		</div>
+    	</div>
+			</div>
+  </body>
+</html>
